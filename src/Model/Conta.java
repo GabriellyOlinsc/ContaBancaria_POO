@@ -1,5 +1,7 @@
 package Model;
 
+import com.sun.source.tree.ReturnTree;
+
 import java.util.ArrayList;
 
 public abstract class Conta{
@@ -18,7 +20,6 @@ public abstract class Conta{
         if (saldo < 0) {
             throw new IllegalArgumentException("ERRO. Saldo deve ser maior ou igual a 0.");
         }
-
         this.saldo = saldo;
         this.historicoBancario = new ArrayList<>();
     }
@@ -76,6 +77,7 @@ public abstract class Conta{
     public void setHistoricoBancario(ArrayList<Double> historicoBancario) {
         this.historicoBancario = historicoBancario;
     }
+
 
     public void creditoConta(double valor) {
         if (valor <= 0) {

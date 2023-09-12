@@ -1,17 +1,14 @@
 package Main;
-
 import Model.Conta;
 import Model.ContaCorrente;
 import Model.ContaPopanca;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 public class Main {
-
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         ArrayList<Conta> contas = new ArrayList<>();
-        
+
         System.out.println("Qual e o tipo de conta? ");
         System.out.println("[ 1 ] - Conta Poupanca");
         System.out.println("[ 2 ] - Conta Corrente");
@@ -35,26 +32,39 @@ public class Main {
                         case 1:
                             System.out.println("Digite o nome da conta: ");
                             String nome1 = input.nextLine();
-                            System.out.println("Digite o numero da conta: ");
-                            String numConta1 = input.nextLine();
-                            System.out.println("Digite o saldo: ");
+                            boolean contaUnica=true;
+                            String numConta1;
+                            do {
+                                System.out.print("Digite o numero da conta: ");
+                                numConta1 =  input.nextLine();
+                                for(Conta contaAtual: contas )
+                                    if (numConta1.equals(contaAtual.getNumeroConta())){
+                                        contaUnica = false;
+                                    break;
+                                    }
+                            }while(!contaUnica);
+                            System.out.print("Digite o saldo: ");
                             double saldo1 = input.nextDouble();
-                            System.out.println("Digite sua taxa de rendimento: ");
-                            double taxa = input.nextDouble();
+                            double taxa;
+                            do {
+                                System.out.print("Digite sua taxa de rendimento: ");
+                                taxa = input.nextDouble();
+                            }while (taxa >1.0 || taxa <0.0);
+
                             contas.add(new ContaPopanca(nome1, numConta1, saldo1, taxa));
                             System.out.println("Conta cadastrada com sucesso.");
                             break;
                         case 2:
-                            System.out.println("Digite o indice da conta para sacar: ");
-                            int indiceConta1 = input.nextInt();
+                            System.out.print("Digite o indice da conta para sacar: ");
+                            int indiceConta1 = input.nextInt(); //usar o numero da conta aqui
 
                             if (indiceConta1 >= 0 && indiceConta1 < contas.size()) {
-                                System.out.println("Digite o valor para sacar: ");
+                                System.out.print("Digite o valor para sacar: ");
                                 double sacar = input.nextDouble();
                                 contas.get(indiceConta1).sacar(sacar);
-                                System.out.println("Saque feito com sucesso.");
+                                System.out.print("Saque feito com sucesso.");
                             } else {
-                                System.out.println("Indice da conta Invalido.");
+                                System.out.print("Indice da conta Invalido.");
                             }
                             break;
                         case 3:
