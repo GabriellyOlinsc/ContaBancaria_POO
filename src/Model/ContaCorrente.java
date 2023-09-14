@@ -59,6 +59,6 @@ public class ContaCorrente extends Conta {
 
     @Override
     public String toString() {
-        return String.format("%s: %s%n%s %.2f","Conta Corrente",super.toString(),"Valor movimentado: ",getValorMovimento());
+        return String.format("%s: %n%s%n%s %.2f","Conta Corrente",super.toString(),"Valor movimentado: ",getValorMovimento());
     }
 }

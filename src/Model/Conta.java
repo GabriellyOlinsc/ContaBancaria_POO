@@ -101,8 +101,8 @@ public abstract class Conta{
 
     @Override
     public String toString() {
-        return String.format("%s: %s%n%s:%s%n%s:%.2f%n%s:%s", "Titular da Conta: ", getTitularConta(),
-                "Numero da Conta: ", getNumeroConta(), "Saldo: ", getSaldo(), "Historico Bancario: ",
+        return String.format("%s: %s%n%s: %s%n%s: %.2f%n%s: %s", "Titular da Conta", getTitularConta(),
+                "Numero da Conta", getNumeroConta(), "Saldo", getSaldo(), "Historico Bancario",
                 getHistoricoBancario());
     }
 }
