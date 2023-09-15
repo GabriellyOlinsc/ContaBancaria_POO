@@ -4,13 +4,9 @@ public class ContaPopanca extends Conta {
 
     private double taxaRendimento;
 
-    public ContaPopanca() {
-
-    }
-
     public ContaPopanca(String titularConta, String numeroConta, double saldo, double taxaRendimento) {
         super(titularConta, numeroConta, saldo);
-        if (taxaRendimento < 0.0 || taxaRendimento > 1.0) {
+        if (taxaRendimento < 0.0) {
             throw new IllegalArgumentException("ERRO. Taxa deve ser MAIOR que 0.0.");
         }
         this.taxaRendimento = taxaRendimento;
@@ -21,23 +17,20 @@ public class ContaPopanca extends Conta {
     }
 
     public void setTaxaRendimento(double taxaRendimento) {
-        if (taxaRendimento < 0.0 || taxaRendimento > 1.0) {
+        if (taxaRendimento < 0.0) {
             throw new IllegalArgumentException("ERRO. Taxa deve ser MAIOR que 0.0.");
         }
         this.taxaRendimento = taxaRendimento;
     }
 
-    //setSaldoRendimento metodo aqui
     public void atualizaSaldoRendimento(double taxa) {
         if (taxa < 0){
             throw new IllegalArgumentException("ERRO. A taxa de rendimento nao deve ser negativa.");
         }
-        
-        double rend = this.getSaldo() * (taxa / 100);
-        creditoConta(rend);
+        double rend = this.getSaldo() + this.getSaldo() * (taxa/100);
+        super.setSaldo(rend);
         System.out.println("Saldo com rendimento de R$" + rend + " atualizado com sucesso.");
     }
-
     @Override
     public void creditoConta(double valor) {
         if (valor <= 0) {

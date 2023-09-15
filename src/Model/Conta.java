@@ -40,7 +40,6 @@ public abstract class Conta{
         if (valor <= 0) {
             throw new IllegalArgumentException("ERRO. O valor do saque deve ser MAIOR que zero.");
         }
-
         this.setSaldo(this.getSaldo() + valor);
         historicoBancario.add(valor); // vai adicionar o valor positivo ao histórico
         System.out.println("Deposito de R$" + valor + " realizado com sucesso!");
@@ -78,7 +77,6 @@ public abstract class Conta{
         this.historicoBancario = historicoBancario;
     }
 
-
     public void creditoConta(double valor) {
         if (valor <= 0) {
             throw new IllegalArgumentException("O valor do credito deve ser MAIOR que zero.");
@@ -86,17 +84,14 @@ public abstract class Conta{
 
         this.setSaldo(this.getSaldo() + valor);
         this.historicoBancario.add(valor);
-        System.out.println("Credito de R$" + valor + " relizado com sucesso.");
     }
 
     public void debitoConta(double valor) {
         if (valor <= 0) {
             throw new IllegalArgumentException("O valor do debito deve ser MAIOR que zero.");
         }
-
         this.setSaldo(this.getSaldo() + valor);
-        this.historicoBancario.add(valor);
-        System.out.println("Debito de R$" + valor + " relizado com sucesso.");
+        this.historicoBancario.add(-valor);
     }
 
     @Override

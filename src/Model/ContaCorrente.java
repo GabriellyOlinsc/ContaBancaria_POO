@@ -28,7 +28,6 @@ public class ContaCorrente extends Conta {
             throw new IllegalArgumentException("ERRO. Saldo insuficiente. Credito nao realizado.");
         }
         super.creditoConta(descont); // mandando o valor descontado do credito para o super para conseguir usar no histórico.
-        System.out.println("Credito de R$" + valor + " realizado com sucesso.");
     }
 
     @Override
@@ -43,7 +42,6 @@ public class ContaCorrente extends Conta {
             throw new IllegalArgumentException("ERRO. Saldo insuficiente. Debito nao realizado.");
         }
         super.debitoConta(descont);
-        System.out.println("Debito de R$" + valor + " realizado com sucesso.");
     }
 
     public double getValorMovimento() {
